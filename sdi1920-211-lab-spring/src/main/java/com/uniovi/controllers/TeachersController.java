@@ -38,4 +38,9 @@ public class TeachersController {
 		teachersService.deleteTeacher(id);
 		return "Deleting teacher";
 	}
+	
+	@RequestMapping("/teacher/edit/{id}")
+	public String editMark(@PathVariable Long id) {
+		return "Editing teacher";
+	}
 }
