@@ -13,7 +13,7 @@ public class Teacher {
 	private String dni;
 	private String nombre;
 	private String apellidos;
-	private String categoría;
+	private String categoria;
 
 	public Teacher() {
 	}
@@ -24,7 +24,7 @@ public class Teacher {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
-		this.categoría = categoría;
+		this.categoria = categoría;
 	}
 
 	public Long getId() {
@@ -59,18 +59,18 @@ public class Teacher {
 		this.apellidos = apellidos;
 	}
 
-	public String getCategoría() {
-		return categoría;
+	public String getCategoria() {
+		return categoria;
 	}
 
-	public void setCategoría(String categoría) {
-		this.categoría = categoría;
+	public void setCategoria(String categoría) {
+		this.categoria = categoría;
 	}
 
 	@Override
 	public String toString() {
 		return "Teacher: id=" + id + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", categoría="
-				+ categoría;
+				+ categoria;
 	}
 
 }

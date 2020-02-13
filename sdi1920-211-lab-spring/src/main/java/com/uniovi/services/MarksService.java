@@ -26,7 +26,6 @@ public class MarksService {
 	}
 
 	public void addMark(Mark mark) {
-		// Si en Id es null le asignamos el ultimo + 1 de la lista
 		marksRepository.save(mark);
 	}
 

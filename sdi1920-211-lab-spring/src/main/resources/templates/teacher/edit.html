@@ -46,20 +46,54 @@
 </nav>
 
 
-
 	<div class="container">
-		<h2>Detalles de la nota</h2>
-		<div class="panel panel-default">
-			<div class="panel-heading">Descripción</div>
-			<div class="panel-body" th:text="${mark.description}">
-				Ejercicio 1</div>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading">Puntuación</div>
-			<div class="panel-body" th:text="${mark.score}">>100</div>
-		</div>
+		<h2>Editar profesor</h2>
+		<form class="form-horizontal" method="post"
+			th:action="${
+			'/teacher/edit/'+teacher.id}">
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="nombre">Nombre:</label>
+				<div class="col-sm-10">
+					<input th:value="${teacher.nombre}" type="text"
+						class="form-control" name="nombre"
+						placeholder="Ejemplo Luis" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
+				<div class="col-sm-10">
+					<input th:value="${teacher.apellidos}" type="text" class="form-control"
+						name="apellidos" placeholder="Enetre 0 y 10" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="dni">DNI:</label>
+				<div class="col-sm-10">
+					<input th:value="${teacher.dni}" type="text"
+						class="form-control" name="dni"
+						placeholder="Ejemplo Luis" required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="categoria">Categoria:</label>
+				<div class="col-sm-10">
+					<input th:value="${teacher.categoria}" type="text"
+						class="form-control" name="categoria"
+						placeholder="Ejemplo Cat1" required="true" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Modificar</button>
+				</div>
+			</div>
+		</form>
 	</div>
+
 
 
 </body>
 </html>
+
