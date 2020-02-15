@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.uniovi.entities.Teacher;
 import com.uniovi.services.TeachersService;
@@ -52,8 +53,8 @@ public class TeachersController {
 		return "teacher/edit";
 	}
 
-	@RequestMapping(value = "/teacher/edit/{id}", method = RequestMethod.POST)
-	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Teacher teacher) {
+	@RequestMapping(value = "/teacher/edit", method = RequestMethod.POST)
+	public String setEdit(Model model, @ModelAttribute Teacher teacher, @RequestParam Long id) {
 		teacher.setId(id);
 		teachersService.addTeacher(teacher);
 		return "redirect:/teacher/details/" + id;

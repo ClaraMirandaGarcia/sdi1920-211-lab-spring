@@ -54,6 +54,8 @@
         <th class="col-md-1">id</th>
         <th>Nombre</th>
         <th>Apellidos</th>
+        <th>Categoria</th>
+		<th class="col-md-1"> </th>
 		<th class="col-md-1"> </th>
 		<th class="col-md-1"> </th>
 		<th class="col-md-1"> </th>
@@ -64,6 +66,7 @@
 	    <td th:text="${teacher.id}"> </td>
 	    <td th:text="${teacher.nombre}"></td>
 	    <td th:text="${teacher.apellidos}"></td>
+	    <td th:text="${teacher.categoria}"></td>
 	    <td><a th:href="${'/teacher/details/' + teacher.id}">detalles</a></td>
 	    <td><a th:href="${'/teacher/edit/' + teacher.id}">modificar</a></td>
 	    <td><a th:href="${'/teacher/delete/' +teacher.id}">eliminar</a></td>
