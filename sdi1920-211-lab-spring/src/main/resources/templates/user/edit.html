@@ -16,7 +16,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="dni">DNI:</label>
 				<div class="col-sm-10">
-					<input th:value="${dni}" type="text"
+					<input th:value="${user.dni}" type="text"
 						class="form-control" name="dni"
 						placeholder="Ejemplo 44436789A" required="true" />
 				</div>
@@ -24,7 +24,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="nombre">Nombre:</label>
 				<div class="col-sm-10">
-					<input th:value="${name}" type="text"
+					<input th:value="${user.name}" type="text"
 						class="form-control" name="name"
 						placeholder="Ejemplo Juan" required="true" />
 				</div>
@@ -33,7 +33,7 @@
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
 				<div class="col-sm-10">
-					<input th:value="${lastName}" type="text"
+					<input th:value="${user.lastName}" type="text"
 						class="form-control" name="lastName"
 						placeholder="Ejemplo Álvarez García" required="true" />
 				</div>

@@ -1,45 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:replace="fragments/head"/> 
+
+<head th:replace="fragments/head" />
 <body>
 
-<!-- Barra de Navegación superior -->
-<<nav th:replace="fragments/nav"/> 
 
-<div class="container">
-  <h2 th:text="#{add.message} #{teacher.message}"></h2>
-  <form class="form-horizontal" method="post" action="/teacher/add">
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="dni">DNI:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="dni" placeholder="Ejemplo 44432798L" required="true" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="nombre">Nombre:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="nombre" placeholder="Ejemplo Luis" required="true" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
-      <div class="col-sm-10">
-        <input type="text" class="form-control" name="apellidos" placeholder="Ejemplo Miranda García" required="true" />
-      </div>
-    </div>
-    <div class="form-group">
-      <label class="control-label col-sm-2" for="categoria">Categoría:</label>
-      <div class="col-sm-10">          
-        <input type="text" class="form-control" name="categoria" placeholder="Cat 1" required="true" />
-      </div>
-    </div>
-    <div class="form-group">        
-      <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Enviar</button>
-      </div>
-    </div>
-  </form>
-</div>
-<footer th:replace="fragments/footer"/> 
+	<nav th:replace="fragments/nav" />
+
+	<div class="container">
+		<h2>Agregar Profesor</h2>
+		<form class="form-horizontal" method="post" action="/teacher/add"
+			th:object="${teacher}">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="dni">DNI:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="dni" required="true" /><span
+						class="text-danger" th:if="${#fields.hasErrors('dni')}"
+						th:errors="*{dni}">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="nombre">Nombre:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="nombre"
+						required="true" /><span class="text-danger"
+						th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="apellidos">Apellidos:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="apellidos"
+						required="true" /><span class="text-danger"
+						th:if="${#fields.hasErrors('apellidos')}" th:errors="*{apellidos}">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="categoria">Categoria:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="categoria"
+						required="true" /><span class="text-danger"
+						th:if="${#fields.hasErrors('categoria')}" th:errors="*{categoria}">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Enviar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
 </body>
 </html>

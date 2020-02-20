@@ -6,4 +6,6 @@ import com.uniovi.entities.Teacher;
 
 public interface TeachersRepository extends CrudRepository<Teacher, Long>{
 
+	Teacher findByDni(String valueOf);
+
 }

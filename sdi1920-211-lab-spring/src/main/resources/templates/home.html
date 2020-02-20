@@ -10,7 +10,8 @@
 			<b th:inline="text">
 				[[${#httpServletRequest.remoteUser}]] </b>
 		</p>
-		<p th:replace="#{user.mark.message}"></p>
+		<p th:text="#{user.mark.message}"></p>
+		
 		<div class="table-responsive">
 			<table class="table table-hover">
 				<thead>
