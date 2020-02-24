@@ -1,5 +1,10 @@
 package com.uniovi.controllers;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +24,9 @@ import com.uniovi.validators.AddMarkFormValidator;
 //Especifica una respuesta con contenido HTML->Controller, y no REST ->RestController
 public class MarksController {
 
+	@Autowired
+	private HttpSession httpSession;
+
 	@Autowired // Inyectar el servicio
 	private MarksService marksService;
 
@@ -30,6 +38,7 @@ public class MarksController {
 
 	@RequestMapping("/mark/list")
 	public String getList(Model model) {
+		
 		model.addAttribute("markList", marksService.getMarks());
 		// Tiene que devolver una vista
 		return "mark/list";
@@ -50,8 +59,6 @@ public class MarksController {
 		marksService.addMark(mark);
 		return "redirect:/mark/list";
 	}
-
-	
 
 	@RequestMapping(value = "/mark/add")
 	public String getMark(Model model) {
