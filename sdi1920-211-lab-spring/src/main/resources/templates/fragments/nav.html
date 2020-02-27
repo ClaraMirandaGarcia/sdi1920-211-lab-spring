@@ -13,11 +13,6 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav" sec:authorize="isAuthenticated()">
 
-				<li><a href="/teacher/add"
-					th:text="#{add.message} + #{teacher.message}"></a></li>
-				<li><a href="/teacher/list"
-					th:text="#{view.message} + #{teacher.message}"></a></li>
-
 				<li><a href="/">Home</a></li>
 
 				<li id="marks-menu" class="dropdown"><a class="dropdown-toggle"
@@ -31,6 +26,17 @@
 							th:text="#{view.message} + #{mark.message}"></a></li>
 					</ul></li>
 
+				<li id="teachers-menu" class="dropdown"><a
+					class="dropdown-toggle" data-toggle="dropdown" href="#">Gestión
+						de profesores<span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu">
+						<li sec:authorize="hasRole('ROLE_ADMIN')"><a
+							href="/teacher/add" th:text="#{add.message} + #{teacher.message}"></a></li>
+						<li><a href="/teacher/list"
+							th:text="#{view.message} + #{teacher.message}"></a></li>
+					</ul></li>
+
 				<li id="users-menu" class="dropdown"
 					sec:authorize="hasRole('ROLE_ADMIN')"><a
 					class="dropdown-toggle" data-toggle="dropdown" href="#"><span
@@ -41,8 +47,6 @@
 						<li><a href="/user/list"
 							th:text="#{view.message} + #{user.message}"></a></li>
 					</ul></li>
-
-
 
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

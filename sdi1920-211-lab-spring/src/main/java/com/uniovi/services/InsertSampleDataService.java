@@ -9,12 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.uniovi.entities.Mark;
+import com.uniovi.entities.Teacher;
 import com.uniovi.entities.User;
 
 @Service
 public class InsertSampleDataService {
 	@Autowired
 	private UsersService usersService;
+
+	@Autowired
+	private TeachersService teachersService;
 
 	@Autowired
 	private RolesService rolesService;
@@ -44,6 +48,8 @@ public class InsertSampleDataService {
 		User user6 = new User("99999988F", "Edward", "Núñez");
 		user6.setPassword("123456");
 		user6.setRole(rolesService.getRoles()[2]);
+
+		Teacher t = new Teacher("444435698L", "Clara", "Miranda", "García");
 
 		Set user1Marks = new HashSet<Mark>() {
 			{
@@ -86,5 +92,7 @@ public class InsertSampleDataService {
 		usersService.addUser(user4);
 		usersService.addUser(user5);
 		usersService.addUser(user6);
+		teachersService.addTeacher(t);
+
 	}
 }
