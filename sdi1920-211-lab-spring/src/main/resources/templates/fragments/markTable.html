@@ -1,18 +1,4 @@
 
-<button type="button" id="updateButton" class="btn btn-default">Actualizar</button>
-<script th:inline="javascript"> 
-		 /*<![CDATA[*/ 
-			$("#updateButton").click(function() {
-				 var numberPage = [[${param.page}]];     
-				 var urlUpdate = '/mark/list/update';     
-				 if (numberPage != null ){      
-					 urlUpdate += "?page="+numberPage[0];     
-				 }     
-				 
-				 $("#tableMarks").load(urlUpdate);
-			});
-			/*]]>*/ 
-		</script>
 
 <div class="table-responsive">
 	<table class="table table-hover" 
