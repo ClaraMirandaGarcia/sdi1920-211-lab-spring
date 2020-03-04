@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.uniovi.tests.pageobjects.PO_HomeView;
+import com.uniovi.tests.pageobjects.PO_LoginView;
 import com.uniovi.tests.pageobjects.PO_Properties;
 import com.uniovi.tests.pageobjects.PO_RegisterView;
 import com.uniovi.tests.pageobjects.PO_View;
@@ -66,7 +67,8 @@ public class NotaneitorTests {
 		driver.quit();
 	}
 
-	// PR01. Acceder a la página principal /
+	//PR01.Acceder a	la página principal/
+
 	@Test
 
 	public void PR01() {
@@ -142,6 +144,57 @@ public class NotaneitorTests {
 		// Comprobamos el error de password mismatch
 		PO_RegisterView.checkKey(driver, "Error.signup.passwordConfirm.coincidence", PO_Properties.getSPANISH());
 
+	}
+
+	// PRN. Loguearse con exito desde el ROl de Usuario, 99999990D, 123456
+	@Test
+	public void PR07() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999990A", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+	}
+
+	@Test
+	public void PR08() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999993D", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+	}
+
+	@Test
+	public void PR09() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999988F", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+
+	}
+
+	@Test
+	public void PR10() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999990A", "123156");
+	}
+
+	@Test
+	public void PR11() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999990A", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+		PO_HomeView.clickOption(driver, "logout", "class", "btn btn-primary");
 	}
 
 }
