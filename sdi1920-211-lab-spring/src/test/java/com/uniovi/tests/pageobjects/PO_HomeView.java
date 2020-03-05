@@ -1,8 +1,6 @@
 package com.uniovi.tests.pageobjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 import com.uniovi.utils.SeleniumUtils;
 

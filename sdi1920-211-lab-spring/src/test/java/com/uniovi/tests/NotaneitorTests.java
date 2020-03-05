@@ -160,6 +160,7 @@ public class NotaneitorTests {
 		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
 		// Rellenamos el formulario
 		PO_LoginView.fillForm(driver, "99999990A", "123456");
+		
 		// COmprobamos que entramos en la pagina privada de Alumno
 		PO_View.checkElement(driver, "text", "Notas del usuario");
 	}
@@ -226,8 +227,6 @@ public class NotaneitorTests {
 	@Test
 	public void PR13() {
 		PO_HomeView.loginForm(driver, "class", "btn btn-primary", "login", "99999990A", "123456");
-
-		
 		
 		SeleniumUtils.esperarSegundos(driver, 1);
 		

@@ -27,7 +27,9 @@ public class AddTeacherFormValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "dni", "Error.empty");
 
 		String dni = String.valueOf(teacher.getDni());
-
+		String name = String.valueOf(teacher.getNombre());
+		String cat = String.valueOf(teacher.getCategoria());
+		
 		if (dni.length() != 9) {
 			errors.rejectValue("dni", "Error.teacher.dni.length");
 		}
@@ -38,6 +40,14 @@ public class AddTeacherFormValidator implements Validator {
 
 		if (teachersService.getTeacherByDni(teacher.getDni()) != null) {
 			errors.rejectValue("dni", "Error.teacher.dni.duplicate");
+		}
+		
+		if(name.length() <2 ) {
+			errors.rejectValue("nombre", "Error.teacher.name.empty");
+		}
+		
+		if(!cat.contains("Cat") ) {
+			errors.rejectValue("categoria", "Error.teacher.cat.notValid");
 		}
 
 	}

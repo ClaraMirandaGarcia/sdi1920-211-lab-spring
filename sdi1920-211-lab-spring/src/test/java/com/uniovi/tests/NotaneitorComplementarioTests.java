@@ -1,7 +1,5 @@
 package com.uniovi.tests;
 
-import static org.junit.Assert.assertTrue;
-
 import java.util.List;
 
 import org.junit.After;
@@ -11,13 +9,11 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.uniovi.tests.pageobjects.PO_HomeView;
-import com.uniovi.tests.pageobjects.PO_LoginView;
 import com.uniovi.tests.pageobjects.PO_PrivateView;
 import com.uniovi.tests.pageobjects.PO_Properties;
 import com.uniovi.tests.pageobjects.PO_RegisterView;
@@ -75,16 +71,60 @@ public class NotaneitorComplementarioTests {
 		driver.quit();
 	}
 
-	// PR01.Acceder a la página principal/
-
+	// PR01. Registrar a un profesor
+	// usuario de ROL Administrador 99999988F/123456
 	@Test
 	public void PR01() {
+
+		PO_HomeView.loginForm(driver, "class", "btn btn-primary", "login", "99999988F", "123456");
+
+		// Pinchamos en la opción de menu de Notas: //li[contains(@id, 'marks-menu')]/a
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id,'teachers-menu')]/a");
+		elementos.get(0).click();
+
+		// Esperamos a aparezca la opción de añadir profesor:
+		// //a[contains(@href,'mark/add')]
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href, 'teacher/add')]");
+		// Pinchamos en agregar Nota.
+		elementos.get(0).click();
 		// Vamos al formulario de registro
-		PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
-		// Rellenamos el formulario.
-		PO_RegisterView.fillForm(driver, "77777778A", "Josefo", "Perez", "77777", "77777");
-		// Comprobamos que entramos en la sección privada
-		PO_View.checkElement(driver, "text", "Notas del usuario");
+		PO_RegisterView.fillTeacherForm(driver, "77777778A", "Josefo", "Perez", "Cat 1");
+
+		PO_View.checkElement(driver, "text", "Josefo");
+
+	}
+
+	// Inválidos nombre y categoría
+	@Test
+	public void PR02() {
+
+		PO_HomeView.loginForm(driver, "class", "btn btn-primary", "login", "99999988F", "123456");
+
+		// Pinchamos en la opción de menu de Notas: //li[contains(@id, 'marks-menu')]/a
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id,'teachers-menu')]/a");
+		elementos.get(0).click();
+
+		// Esperamos a aparezca la opción de añadir profesor:
+		// //a[contains(@href,'mark/add')]
+		elementos = PO_View.checkElement(driver, "free", "//a[contains(@href, 'teacher/add')]");
+		// Pinchamos en agregar Nota.
+		elementos.get(0).click();
+		// Vamos al formulario de registro
+		PO_RegisterView.fillTeacherForm(driver, "77777788A", "J", "Perez", "asdf");
+		
+		SeleniumUtils.textoPresentePagina(driver, "El nombre tiene que tener más de un caracter.");
+
+	}
+	
+	// Sólo administradores pueden añadir a un profesor
+	@Test
+	public void PR03() {
+		PO_HomeView.loginForm(driver, "class", "btn btn-primary", "login", "99999990A", "123456");
+
+		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'teachers-menu')]/a");
+		elementos.get(0).click();
+		
+		SeleniumUtils.textoNoPresentePagina(driver, "Añadir profesor");
 	}
 
 }
