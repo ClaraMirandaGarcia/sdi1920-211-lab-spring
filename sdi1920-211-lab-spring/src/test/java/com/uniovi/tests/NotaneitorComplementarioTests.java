@@ -124,7 +124,7 @@ public class NotaneitorComplementarioTests {
 		List<WebElement> elementos = PO_View.checkElement(driver, "free", "//li[contains(@id, 'teachers-menu')]/a");
 		elementos.get(0).click();
 		
-		SeleniumUtils.textoNoPresentePagina(driver, "Añadir profesor");
+		SeleniumUtils.textoNoPresentePagina(driver, "Agregar Profesor");
 	}
 
 }
