@@ -1,13 +1,13 @@
 package com.uniovi.tests.pageobjects;
 
-import java.util.List;
-
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import com.uniovi.utils.SeleniumUtils;
 
 public class PO_HomeView extends PO_NavView {
+
 	static public void checkWelcome(WebDriver driver, int language) {
 		// Esperamos a que se cargue el saludo de bienvenida en Español
 		SeleniumUtils.EsperaCargaPagina(driver, "text", p.getString("welcome.message", language), getTimeout());
@@ -26,4 +26,15 @@ public class PO_HomeView extends PO_NavView {
 		// Esperamos a que se cargue el saludo de bienvenida en Español
 		PO_HomeView.checkWelcome(driver, locale1);
 	}
+
+	static public void loginForm(WebDriver driver, String classStr,String buttonName, String loginText, String namep, String passwordp) {
+
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, loginText, classStr, buttonName);
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, namep, passwordp);		
+		PO_View.checkElement(driver, "text", namep);
+
+	}
+
 }
